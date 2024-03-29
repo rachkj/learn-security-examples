@@ -1,3 +1,9 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+Information Disclosure Vulnerability and Secure Prevention:
+Information disclosure vulnerability exposes sensitive data to unauthorized parties due to inadequate controls or software flaws. Secure measures like access controls, encryption, and data masking limit access and protect data integrity, thwarting unauthorized access attempts.
+
 Which CIA property does tampering violate?
+Tampering primarily violates the Integrity aspect of the CIA triad, compromising data reliability by allowing unauthorized modifications.
+
 What additional security mechanisms can you incorporate?
+Additional measures such as Intrusion Detection and Prevention Systems (IDPS), Security Information and Event Management (SIEM), Data Loss Prevention (DLP), and regular security audits can enhance protection against information disclosure beyond access controls, encryption, and data masking.

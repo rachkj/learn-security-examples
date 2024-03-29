@@ -1,0 +1,8 @@
+Tampering Vulnerability and Secure Prevention:
+Tampering refers to the unauthorized modification of data or systems by an attacker. This can include altering data in transit, modifying files or configurations on a system, or changing parameters in a communication protocol. The vulnerability arises when attackers gain access to sensitive data or systems and manipulate them to achieve their malicious goals, such as stealing information, causing system malfunctions, or undermining trust in the integrity of data.
+The secure version prevents tampering by implementing various security measures, including data validation, encryption, and integrity checks. For example, using digital signatures to verify the authenticity and integrity of data ensures that any tampering attempts can be detected. Additionally, employing secure communication protocols such as HTTPS helps protect data from being intercepted and modified during transmission.
+
+Tampering Violation of CIA Property:
+Tampering primarily violates the Integrity aspect of the CIA (Confidentiality, Integrity, and Availability) triad.
+Integrity: Tampering attacks compromise the integrity of data and systems by allowing unauthorized modifications without detection. When attackers tamper with data or system configurations, it undermines the trustworthiness and reliability of the information, leading to potential misinformation, system malfunctions, or security breaches.
+In summary, tampering undermines the fundamental principle of integrity by enabling unauthorized modifications to data or systems, posi
