@@ -1,0 +1,13 @@
+1. Briefly explain the vulnerability and why the secure version prevents the
+vulnerability.
+
+The privilege escalation vulnerability in `insecure.ts` occurs because it relies on user-submitted data (`userId` and `newRole`) without verifying the identity of the requester. Any user can claim to be an admin by submitting an `admin` userId and change roles, effectively bypassing authorization. The secure version fixes this by using session-based authentication. It checks the logged-in user's identity from the session (`req.session.userId`) and only allows role updates if that user exists and has the `admin` role. This ensures only authenticated and authorized admins can perform sensitive actions like updating user roles, preventing unauthorized privilege escalation.
+
+
+2. What additional security mechanisms can you incorporate to prevent such attacks?
+- To strengthen security and prevent privilege escalation attacks, you can incorporate the following additional mechanisms:
+- Proper Authentication: Use a secure login system with hashed passwords and session/token-based authentication to verify user identity.
+- Role-Based Access Control (RBAC): Implement structured access control policies where only users with specific roles (like admin) can perform certain actions, regardless of input.
+- Input Validation and Sanitization: Validate and sanitize all user input to prevent manipulation of critical fields like userId or role.
+- Audit Logging: Log sensitive actions (e.g., role changes) with user IDs and timestamps to track unauthorized attempts and ensure accountability.
+- Session Integrity Checks: Use secure, signed, and tamper-proof session cookies with short lifespans and automatic expiry on logout or inactivity.

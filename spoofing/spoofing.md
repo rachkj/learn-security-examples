@@ -30,5 +30,13 @@ This example demonstrates spoofind through two ways -- Stealing cookies programm
 ## For you to answer
 
 1. Briefly explain the spoofing vulnerability in **insecure.ts**.
+The spoofing vulnerability in `insecure.ts` arises from the lack of authentication and trust placed on user input to set session values. Specifically, the `/register` endpoint allows users to set their session's `user` field simply by submitting a name through a form, without any verification. This means an attacker can submit the name "Admin" and gain elevated privileges, as the `/sensitive` endpoint checks for `req.session.user === 'Admin'` to authorize access to sensitive operations. Since there's no actual login or authentication mechanism in place, this makes it easy for anyone to impersonate an admin. Additionally, the session cookie is configured with `httpOnly: false`, making it accessible via client-side JavaScript and increasing the risk of session hijacking through XSS attacks.
+
 2. Briefly explain different ways in which vulnerability can be exploited.
+- Session spoofing: Attacker submits "Admin" in the form to gain unauthorized access to sensitive routes.
+- Session fixation: Attacker sets up a session with "Admin" and tricks a user into using it.
+- Cookie theft: With httpOnly set to false, attackers can steal session cookies via JavaScript.
+- Role guessing: No validation allows attackers to try different role names to gain access.
+
 3. Briefly explain why **secure.ts** does not have the spoofing vulnerability in **insecure.ts**.
+The `secure.ts` version mitigates the spoofing vulnerability present in `insecure.ts` by using safer session cookie settings and better configuration practices. Specifically, it sets the `httpOnly` flag to `true`, which prevents JavaScript from accessing session cookies and reduces the risk of cookie theft via XSS. It also enables `sameSite`, which helps protect against CSRF attacks. Unlike `insecure.ts`, the session secret is passed securely via environment arguments instead of being hardcoded. While both versions still lack proper authentication, `secure.ts` makes session hijacking and manipulation significantly harder due to its stricter session configuration.
